@@ -1,0 +1,25 @@
+{
+  "name": "js-fake-api-with-mock-data",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js-fake-api.js",
+  "dependencies": {
+    "uuid": "^8.3.2"
+  },
+  "type": "module",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christianboyle/js-fake-api-with-mock-data.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christianboyle/js-fake-api-with-mock-data/issues"
+  },
+  "homepage": "https://github.com/christianboyle/js-fake-api-with-mock-data#readme"
+}
