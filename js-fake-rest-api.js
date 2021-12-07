@@ -29,16 +29,16 @@ const getUsers = () =>
     setTimeout(() => resolve(Object.values(users)), 250);
   });
 
-const doGetUsers = async () => {
-  try {
-    const result = await getUsers();
-    console.log(result);
-  } catch (error) {
-    console.log(error);
-  }
-};
+// const doGetUsers = async () => {
+//   try {
+//     const result = await getUsers();
+//     console.log(result);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
-//doGetUsers();
+// doGetUsers();
 
 const getUser = (id) =>
   new Promise((resolve, reject) => {
@@ -51,13 +51,40 @@ const getUser = (id) =>
     setTimeout(() => resolve(users[id]), 250);
   });
 
-const doGetUser = async (id) => {
+// const doGetUser = async (id) => {
+//   try {
+//     const result = await getUser(id);
+//     console.log(result);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+// doGetUser(idTwo);
+
+const createUser = (data) =>
+  new Promise((resolve, reject) => {
+    if (!data.firstName || !data.lastName) {
+      reject(new Error('Not all information provided'));
+    }
+
+    const id = uuidv4();
+    const newUser = { id, ...data };
+
+    users = { ...users, [id]: newUser };
+
+    setTimeout(() => resolve(true), 250);
+  });
+
+const doCreateUser = async (data) => {
   try {
-    const result = await getUser(id);
+    const result = await createUser(data);
     console.log(result);
   } catch (error) {
     console.log(error);
   }
 };
 
-doGetUser(idTwo);
+doCreateUser({ firstName: 'Baxter', lastName: 'Boyle' });
+
+console.log(users);
