@@ -76,15 +76,43 @@ const createUser = (data) =>
     setTimeout(() => resolve(true), 250);
   });
 
-const doCreateUser = async (data) => {
+// const doCreateUser = async (data) => {
+//   try {
+//     const result = await createUser(data);
+//     console.log(result);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+// doCreateUser({ firstName: 'Baxter', lastName: 'Boyle' });
+
+// console.log(users);
+
+const updateUser = (id, data) =>
+  new Promise((resolve, reject) => {
+    if (!users[id]) {
+      return setTimeout(() => reject(new Error('User not found')), 250);
+    }
+
+    users[id] = { ...users[id], ...data };
+
+    return setTimeout(() => {
+      resolve(true);
+    }, 250);
+  });
+
+const doUpdateUser = async (id, data) => {
   try {
-    const result = await createUser(data);
+    const result = await updateUser(id, data);
     console.log(result);
   } catch (error) {
     console.log(error);
   }
 };
 
-doCreateUser({ firstName: 'Baxter', lastName: 'Boyle' });
+console.log(users[idTwo].isDeveloper); // false
 
-console.log(users);
+doUpdateUser(idTwo, { isDeveloper: true });
+
+console.log(users[idTwo].isDeveloper); // true
