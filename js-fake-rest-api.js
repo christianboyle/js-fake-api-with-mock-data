@@ -102,17 +102,45 @@ const updateUser = (id, data) =>
     }, 250);
   });
 
-const doUpdateUser = async (id, data) => {
+// const doUpdateUser = async (id, data) => {
+//   try {
+//     const result = await updateUser(id, data);
+//     console.log(result);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+// console.log(users[idTwo].isDeveloper); // false
+
+// doUpdateUser(idTwo, { isDeveloper: true });
+
+// console.log(users[idTwo].isDeveloper); // true
+
+const deleteUser = (id) =>
+  new Promise((resolve, reject) => {
+    const { [id]: user, ...rest } = users;
+
+    if (!user) {
+      return setTimeout(() => reject(new Error('User not found')), 250);
+    }
+
+    users = { ...rest };
+
+    return setTimeout(() => resolve(true), 250);
+  });
+
+const doDeleteUser = async (id) => {
   try {
-    const result = await updateUser(id, data);
+    const result = await deleteUser(id);
     console.log(result);
   } catch (error) {
     console.log(error);
   }
 };
 
-console.log(users[idTwo].isDeveloper); // false
+console.log(users); // idOne, idTwo
 
-doUpdateUser(idTwo, { isDeveloper: true });
+doDeleteUser(idTwo);
 
-console.log(users[idTwo].isDeveloper); // true
+console.log(users); // idOne
